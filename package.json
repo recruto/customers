@@ -1,0 +1,22 @@
+{
+  "name": "customers",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "firestore:company": "mkdir -p tmp/$COMPANY && curl -X GET 'https://firestore.googleapis.com/v1beta1/projects/recru-to/databases/(default)/documents/companies/'$COMPANY'' -o tmp/$COMPANY/company.json",
+    "firestore:positions": "mkdir -p tmp/$COMPANY && curl -X GET 'https://firestore.googleapis.com/v1beta1/projects/recru-to/databases/(default)/documents/companies/'$COMPANY'/positions' -o tmp/$COMPANY/positions.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/recruto/customers.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/recruto/customers/issues"
+  },
+  "homepage": "https://github.com/recruto/customers#readme"
+}

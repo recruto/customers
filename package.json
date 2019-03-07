@@ -1,22 +1,54 @@
 {
   "name": "customers",
   "version": "0.0.1",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "firestore:company": "mkdir -p tmp/$COMPANY && curl -X GET 'https://firestore.googleapis.com/v1beta1/projects/recru-to/databases/(default)/documents/companies/'$COMPANY'' -o tmp/$COMPANY/company.json",
-    "firestore:positions": "mkdir -p tmp/$COMPANY && curl -X GET 'https://firestore.googleapis.com/v1beta1/projects/recru-to/databases/(default)/documents/companies/'$COMPANY'/positions' -o tmp/$COMPANY/positions.json"
-  },
+  "description": "My posh Nuxt.js project",
+  "author": "Diego Leme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/recruto/customers.git"
   },
-  "keywords": [],
-  "author": "",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/recruto/customers/issues"
   },
-  "homepage": "https://github.com/recruto/customers#readme"
+  "homepage": "https://github.com/recruto/customers#readme",
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "precommit": "npm run lint",
+    "test": "jest",
+    "firestore:company": "mkdir -p tmp/$COMPANY && curl -X GET 'https://firestore.googleapis.com/v1beta1/projects/recru-to/databases/(default)/documents/companies/'$COMPANY'' -o tmp/$COMPANY/company.json",
+    "firestore:positions": "mkdir -p tmp/$COMPANY && curl -X GET 'https://firestore.googleapis.com/v1beta1/projects/recru-to/databases/(default)/documents/companies/'$COMPANY'/positions' -o tmp/$COMPANY/positions.json"
+  },
+  "dependencies": {
+    "cross-env": "^5.2.0",
+    "nuxt": "^2.4.0",
+    "@nuxtjs/pwa": "^2.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9",
+    "@nuxtjs/eslint-config": "^0.0.1",
+    "babel-eslint": "^8.2.1",
+    "eslint": "^5.0.1",
+    "eslint-config-standard": ">=12.0.0",
+    "eslint-plugin-import": ">=2.14.0",
+    "eslint-plugin-jest": ">=21.24.1",
+    "eslint-plugin-node": ">=7.0.1",
+    "eslint-plugin-nuxt": ">=0.4.2",
+    "eslint-plugin-promise": ">=4.0.1",
+    "eslint-plugin-standard": ">=4.0.0",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-prettier": "2.6.2",
+    "prettier": "1.14.3",
+    "@vue/test-utils": "^1.0.0-beta.27",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "^24.1.0",
+    "jest": "^24.1.0",
+    "vue-jest": "^3.0.3"
+  }
 }

@@ -1,20 +1,22 @@
-import React from 'react';
-import { mapValues } from 'lodash';
+import React from 'react'
 
 import Layout from "../components/layout"
 import { Link } from "gatsby"
 import SEO from "../components/seo"
 
-export default ({ pageContext: { company, positions } }) => {
+export default ({ pageContext: { company } }) => {
   let rows = []
-  positions.forEach(position => {
-    let fields = mapValues(position.fields, o => o.stringValue)
+
+  for (const id in company.positions) {
+    if (company.positions.hasOwnProperty(id)) {
+
     rows.push((
       <li>
-        <Link to={position.name.match(/^.*\/([a-zA-Z0-9-]*)$/)[1]}>{fields.title}</Link>
+        <Link to={id}>{company.positions[id].title}</Link>
       </li>
     ))
-  })
+    }
+  }
 
   return (
     <Layout>
@@ -22,8 +24,8 @@ export default ({ pageContext: { company, positions } }) => {
       <h1>{company.name}</h1>
       <ul>
         {rows}
-      </ul>    
+      </ul>
     </Layout>
   )
-};
+}
 

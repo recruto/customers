@@ -1,26 +1,28 @@
-const _ = require("lodash")
-const data  = {
-  company: require("./data/company.json"),
-  positions:  require("./data/positions.json")
-}
+const company = require("./tmp/company.json")
+const positions = require("./tmp/positions.json")
+const extractData = require("./extractData")
 
-exports.createPages = async ({ actions: { createPage } }) => {
+const data = extractData(company, positions)
+
+exports.createPages = ({ actions: { createPage } }) => {
   createPage({
     path: `/`,
     component: require.resolve("./src/templates/company.js"),
-    context: { 
-      company: _.mapValues(data.company.fields, o => o.stringValue),
-      positions: data.positions.documents
+    context: {
+      company: data,
     },
   })
 
-  data.positions.documents.forEach(position => {
-    createPage({
-      path: `/${position.name.match(/^.*\/([a-zA-Z0-9-]*)$/)[1]}/`,
-      component: require.resolve("./src/templates/position.js"),
-      context: { 
-        position: _.mapValues(position.fields, o => o.stringValue)
-      },
-    })
-  })
+  for (const id in data.positions) {
+    if (data.positions.hasOwnProperty(id)) {
+      createPage({
+        path: `/${id}/`,
+        component: require.resolve("./src/templates/position.js"),
+        context: {
+          company: data,
+          position: data.positions[id],
+        },
+      })
+    }
+  }
 }

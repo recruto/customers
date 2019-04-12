@@ -1,0 +1,17 @@
+{
+  "hosting": {
+    "public": "public",
+    "target": "diegoleme-recru-to",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
